@@ -20,6 +20,26 @@ typedef struct {
     unsigned int size;
 } Manifest;
 
+typedef struct {
+    Manifest manifest;
+    TOC toc;
+    struct epub_t epub;
+} Core;
+
+typedef struct {
+    unsigned int fontSize;
+    // Color color;
+    // font family
+    /* IF IMAGE */
+    unsigned char *src; // DEFAULT: NULL
+} Properties;
+
+typedef struct {
+    const unsigned char *tag;
+    unsigned char *content;
+    Properties prop;
+} HTMLNode;
+
 /**
  * initialize and open a given epub file
  * @param filename filename/path to the epub file
@@ -40,5 +60,9 @@ Manifest prepareManifest(struct epub_t *epub);
  * @return
  */
 TOC prepareTOC(struct epub_t *epub);
+
+HTMLNode *parseHTMLFile(const unsigned char *fileContent);
+
+unsigned int getIndexManifest(Core *core, unsigned char *idref);
 
 #endif //EPUBREADER_READER_H

@@ -1,24 +1,19 @@
 #include "reader.h"
-#include <string.h>
 
 int main(void)
 {
-    struct epub_t epub = prepareEpub("caughtup.epub");
-    Manifest manifest;
-    TOC toc;
+    Core core = {0};
+    HTMLNode *page;
+    core.epub = prepareEpub("caughtup.epub");
 
-    manifest = prepareManifest(&epub);
-    toc = prepareTOC(&epub);
-//    printf("%s\n", manifest.idList[5]);
-//    printf("%s\n", read_zfile(epub.zipfile, (const char*) manifest.hrefList[50]));
+    core.manifest = prepareManifest(&core.epub);
+    core.toc = prepareTOC(&core.epub);
 
-    for (int i = 0; i < toc.size; i++) {
-//        printf("ITEMREF IS:\t%s\n", toc.spine[i]);
-        for (int j = 0; j < manifest.size; j++) {
-            if (strcmp(toc.spine[i], manifest.idList[j]) == 0) {
-//                printf("%s\n", manifest.hrefList[j]);
-                printf("%s\n", read_zfile(epub.zipfile, manifest.hrefList[j]));
-            }
+    page = parseHTMLFile(read_zfile(core.epub.zipfile, core.manifest.hrefList[getIndexManifest(&core, "id267")]));
+
+    for (int i = 0; page[i].tag; i++) {
+        if (page[i].content) {
+            printf("%s\n", page[i].content);
         }
     }
 
