@@ -3,7 +3,7 @@ project(EpubReader C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(EpubReader Sources/main.c Headers/epub.h Sources/Core/prepareEpub.c Headers/reader.h Sources/Core/prepareStructs.c)
+add_executable(EpubReader Sources/main.c Headers/epub.h Sources/Core/Init/prepareEpub.c Headers/reader.h Sources/Core/Init/prepareStructs.c Sources/Core/htmlParsing.c Sources/Core/utils.c)
 
 include_directories(${CMAKE_SOURCE_DIR}/Headers)
 
