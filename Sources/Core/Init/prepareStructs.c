@@ -14,7 +14,7 @@ Manifest prepareManifest(struct epub_t *epub)
     node = node->children;
 
     while (node) {
-        if (get_node_prop(node, "href"))
+        if (node->type == XML_TEXT_NODE)
             count++;
         node = node->next;
     }
@@ -51,7 +51,7 @@ TOC prepareTOC(struct epub_t *epub)
 
     node = get_node(get_node(node, "spine"), "itemref");
     while (node) {
-        if (get_node_prop(node, "idref"))
+        if (node->type == XML_TEXT_NODE)
             count++;
         node = node->next;
     }
