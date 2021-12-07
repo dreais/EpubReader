@@ -15,7 +15,7 @@ HTMLNode *parseHTMLFile(const unsigned char *fileContent)
     htmlNodePtr n = get_node(get_root_node(html), "body");
     int count = 0, i = 0;
 
-    n = n->children;//get_node(n, "p");
+    n = n->children;
     while (n) {
         if (n->type == XML_ELEMENT_NODE) {
             count++;
@@ -32,12 +32,10 @@ HTMLNode *parseHTMLFile(const unsigned char *fileContent)
                 if (n->content) {
                     page[i].content = n->content;
                     page[i].tag = n->name;
-//                    printf("%s\n", n->content);
                 } else if (strcmp(n->name, "img") == 0) {
                     page[i].prop.src = get_node_prop(n, "src");
                     page[i].tag = n->name;
                     page[i].content = NULL;
-//                    printf("%s\n", get_node_prop(n, "src"));
                 }
                 i++;
                 n = n->parent;
