@@ -10,6 +10,13 @@ int main(void)
 //    core.toc = prepareTOC(&core.epub);
 //
 //    page = parseHTMLFile(read_zfile(core.epub.zipfile, core.manifest.hrefList[getIndexManifest(&core, "id267")]));
-
+    InitWindow(500, 500, "E-books reader");
+    SetTargetFPS(30);
+    while (!WindowShouldClose()) {
+        BeginDrawing();
+        ClearBackground((Color) {34, 34, 34, 255});
+        EndDrawing();
+    }
+    CloseWindow();
     return 0;
 }
