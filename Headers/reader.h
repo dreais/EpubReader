@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 #include "epub.h"
+#include "raylib.h"
 
 typedef struct {
     unsigned char **spine;
