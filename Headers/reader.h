@@ -66,4 +66,6 @@ HTMLNode *parseHTMLFile(const unsigned char *fileContent);
 
 unsigned int getIndexManifest(Core *core, unsigned char *idref);
 
+void initRaylibFunctions(void);
+
 #endif //EPUBREADER_READER_H

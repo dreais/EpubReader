@@ -5,7 +5,7 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(${CMAKE_SOURCE_DIR}/Headers)
 
-add_executable(EpubReader Sources/main.c Headers/epub.h Sources/Core/Init/prepareEpub.c Headers/reader.h Sources/Core/Init/prepareStructs.c Sources/Core/htmlParsing.c Sources/Core/utils.c Headers/raylib.h)
+add_executable(EpubReader Sources/main.c Headers/epub.h Sources/Core/Init/prepareEpub.c Headers/reader.h Sources/Core/Init/prepareStructs.c Sources/Core/htmlParsing.c Sources/Core/utils.c Headers/raylib.h Sources/Render/InitRaylib.c)
 
 find_package(raylib 3.0 QUIET) # Let CMake search for a raylib-config.cmake
 
